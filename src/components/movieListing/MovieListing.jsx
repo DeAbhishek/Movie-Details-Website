@@ -1,36 +1,26 @@
 import "./MovieListing.scss";
 import { useSelector } from "react-redux";
-import {
-  selectMovies,
-  selectMovieStatus,
-} from "../../features/movies/movieSlice";
+import { selectMovies, selectShows } from "../../features/dataSlice";
 import MovieCard from "../movieCard/MovieCard";
-import { selectShows, selectShowStatus } from "../../features/shows/showSlice";
 
 const MovieListing = () => {
   const movies = useSelector(selectMovies);
-  const movieStatus = useSelector(selectMovieStatus);
   const shows = useSelector(selectShows);
-  const showsStatus = useSelector(selectShowStatus);
-  let renderMovies =
-    movieStatus === "success" ? (
-      movies.Search.map((movie, index) => (
-        <MovieCard key={index} data={movie} />
-      ))
-    ) : (
-      <div className="error">
-        <h3>There is an error.</h3>
-      </div>
-    );
+  let renderMovies = movies.Response ? (
+    movies.Search.map((movie, index) => <MovieCard key={index} data={movie} />)
+  ) : (
+    <div className="error">
+      <h3>There is an error.</h3>
+    </div>
+  );
 
-  let renderShows =
-    showsStatus === "success" ? (
-      shows.Search.map((movie, index) => <MovieCard key={index} data={movie} />)
-    ) : (
-      <div className="error">
-        <h3>There is an error.</h3>
-      </div>
-    );
+  let renderShows = shows.Response ? (
+    shows.Search.map((movie, index) => <MovieCard key={index} data={movie} />)
+  ) : (
+    <div className="error">
+      <h3>There is an error.</h3>
+    </div>
+  );
 
   return (
     <div className="movie-wrapper">
