@@ -24,7 +24,7 @@ const movieSlice = createSlice({
         state.movies = action.payload;
       })
       .addCase(fetchMovieByAsync.rejected, (state, action) => {
-        state.status = "Failed";
+        state.status = "failed";
         state.error = action.error.message;
       });
   },
