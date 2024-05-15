@@ -17,14 +17,18 @@ export const fetchShowByAsync = createAsyncThunk("data/fetchShow", () =>
   fetchShow()
 );
 
-export const fetchDetailsByAsync = createAsyncThunk(
-  "data/fetchDetails",
-  (id) => fetchDetails(id)
+export const fetchDetailsByAsync = createAsyncThunk("data/fetchDetails", (id) =>
+  fetchDetails(id)
 );
 
 const dataSlice = createSlice({
   name: "data",
   initialState,
+  reducers: {
+    removeSelectedMovieOrShow: (state) => {
+      state.details = {};
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchMovieByAsync.pending, (state) => {
@@ -65,6 +69,7 @@ const dataSlice = createSlice({
 
 export default dataSlice.reducer;
 
+export const { removeSelectedMovieOrShow } = dataSlice.actions;
 export const selectMovies = (state) => state.data.movies;
 export const selectShows = (state) => state.data.shows;
 export const selectStatus = (state) => state.data.status;

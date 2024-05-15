@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   fetchDetailsByAsync,
+  removeSelectedMovieOrShow,
   selectDetails,
   selectStatus,
 } from "../../features/dataSlice";
@@ -16,6 +17,9 @@ const MovieDetail = () => {
 
   useEffect(() => {
     dispatch(fetchDetailsByAsync(imdbID));
+    return ()=>{
+      dispatch(removeSelectedMovieOrShow())
+    }
   }, [dispatch, imdbID]);
   return (
     <div className="movie-section">
