@@ -4,7 +4,7 @@ const Root = () => {
   return (
     <>
       <Header />
-      <main>
+      <main style={{ margin: "0px 40px" }}>
         <Outlet />
       </main>
       <Footer />
