@@ -9,12 +9,12 @@ const initialState = {
   details: {},
 };
 
-export const fetchMovieByAsync = createAsyncThunk("data/fetchMovie", () =>
-  fetchMovie()
+export const fetchMovieByAsync = createAsyncThunk("data/fetchMovie", (term) =>
+  fetchMovie(term)
 );
 
-export const fetchShowByAsync = createAsyncThunk("data/fetchShow", () =>
-  fetchShow()
+export const fetchShowByAsync = createAsyncThunk("data/fetchShow", (term) =>
+  fetchShow(term)
 );
 
 export const fetchDetailsByAsync = createAsyncThunk("data/fetchDetails", (id) =>

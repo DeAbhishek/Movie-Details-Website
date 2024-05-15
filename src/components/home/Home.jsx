@@ -5,9 +5,11 @@ import { fetchMovieByAsync, fetchShowByAsync } from "../../features/dataSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const movieText = "Harry";
+  const showText = "Friends";
   useEffect(() => {
-    dispatch(fetchMovieByAsync());
-    dispatch(fetchShowByAsync());
+    dispatch(fetchMovieByAsync(movieText));
+    dispatch(fetchShowByAsync(showText));
   }, [dispatch]);
   return (
     <div>

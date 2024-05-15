@@ -52,21 +52,25 @@ const MovieListing = () => {
     ],
   };
 
-  let renderMovies = movies.Response ? (
-    movies.Search.map((movie, index) => <MovieCard key={index} data={movie} />)
-  ) : (
-    <div className="error">
-      <h3>There is an error.</h3>
-    </div>
-  );
+  let renderMovies =
+    movies.Response === "True" ? (
+      movies.Search.map((movie, index) => (
+        <MovieCard key={index} data={movie} />
+      ))
+    ) : (
+      <div className="error">
+        <h3>{movies.Error}</h3>
+      </div>
+    );
 
-  let renderShows = shows.Response ? (
-    shows.Search.map((movie, index) => <MovieCard key={index} data={movie} />)
-  ) : (
-    <div className="error">
-      <h3>There is an error.</h3>
-    </div>
-  );
+  let renderShows =
+    shows.Response === "True" ? (
+      shows.Search.map((movie, index) => <MovieCard key={index} data={movie} />)
+    ) : (
+      <div className="error">
+        <h3>{shows.Error}</h3>
+      </div>
+    );
 
   return (
     <div className="movie-wrapper">

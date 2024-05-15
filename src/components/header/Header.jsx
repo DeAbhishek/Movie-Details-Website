@@ -2,13 +2,19 @@ import "./Header.scss";
 import { Link } from "react-router-dom";
 import user from "../../assets/user.png";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchMovieByAsync, fetchShowByAsync } from "../../features/dataSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const [term, setTerm] = useState("");
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(term);
+    dispatch(fetchMovieByAsync(term));
+    dispatch(fetchShowByAsync(term));
   };
+
   return (
     <div className="header">
       <div className="logo">
