@@ -1,10 +1,5 @@
-
 const MovieListing = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <div>MovieListing</div>;
+};
 
-export default MovieListing
+export default MovieListing;
