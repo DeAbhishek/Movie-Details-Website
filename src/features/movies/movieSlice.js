@@ -4,7 +4,7 @@ import { fetchMovie } from "./movieAPI";
 const initialState = {
   status: "idle",
   error: null,
-  movies: [],
+  movies: {},
 };
 
 export const fetchMovieByAsync = createAsyncThunk("movie/fetchMovie", () =>
@@ -33,3 +33,4 @@ const movieSlice = createSlice({
 export default movieSlice.reducer;
 
 export const selectMovies = (state) => state.movie.movies;
+export const selectMovieStatus = (state) => state.movie.status;

@@ -5,6 +5,6 @@ export const fetchMovie = async () => {
   const { data } = await movieAPI.get(
     `?apiKey=${import.meta.env.VITE_APIKey}&s=${movieText}&type=movie`
   );
-  console.log(data.Search)
-  return data.Search;
+
+  return data;
 };
